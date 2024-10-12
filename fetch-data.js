@@ -5,10 +5,12 @@ async function fetchUserData(){
         const response = await fetch(apiUrl);
         const users = await response.json();
         dataContainer.innerHTML = '';
-        const userList = '<ul></ul>';
+        const userList = document.createElement('ul');
+        dataContainer.appendChild(userList);
         users.forEach(user => {
-            let element = `<li>${user.name}</li>`;
-            userList.push(element);
+            let element = document.createElement('li');
+            element.textContent = user.name;
+            userList.appendChild(element);
         });
         dataContainer.innerHTML += dataContainer;
 
